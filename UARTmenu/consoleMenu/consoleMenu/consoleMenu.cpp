@@ -139,14 +139,6 @@ int main()
     return 0;
 }
 
-void putIntoStr(char *str, char *input) {
-    int lenght = strlen(input);
-    for (int i = 0; i < lenght; i++) {
-        str[i] = input[i];
-    }
-    str[lenght + 1] = '\0';
-}
-
 int readButton(){
     char key = _getch();
     printf("%c", key);

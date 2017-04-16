@@ -18,7 +18,6 @@ int currentMenu = 0;
 int currentItem = 0;
 char *menuItems[5][4]; // number of menu, number of items in menu, string
 char *menuTitle[5]; // number of menu, string
-char output[150+1];
 
 int main(void)
 {
@@ -68,14 +67,15 @@ int main(void)
 } //main
 
 void printMenu(){
-    char *green = "\x1B[32m";
-    char *white = "\x1B[37;1m";
+    char output[150+1];
+    char *green = "\x1B[32m>";
+    char *white = "\x1B[37;1m ";
     usart_transmit_string("\x1B[2J\x1B[H"); // clear console
-    sprintf(output, "%s%s\n\r%s%c %s\n\r%s%c %s\n\r%s%c %s\n\r%s%c %s", "\x1B[31;1m", menuTitle[currentMenu],
-    currentItem == 0 ? green : white, currentItem == 0 ? '>' : ' ', menuItems[currentMenu][0],
-    currentItem == 1 ? green : white, currentItem == 1 ? '>' : ' ', menuItems[currentMenu][1],
-    currentItem == 2 ? green : white, currentItem == 2 ? '>' : ' ', menuItems[currentMenu][2],
-    currentItem == 3 ? green : white, currentItem == 3 ? '>' : ' ', menuItems[currentMenu][3]);
+    sprintf(output, "%s%s\n\r%s %s\n\r%s %s\n\r%s %s\n\r%s %s", "\x1B[31;1m", menuTitle[currentMenu],
+    currentItem == 0 ? green : white, menuItems[currentMenu][0],
+    currentItem == 1 ? green : white, menuItems[currentMenu][1],
+    currentItem == 2 ? green : white, menuItems[currentMenu][2],
+    currentItem == 3 ? green : white, menuItems[currentMenu][3]);
     usart_transmit_string(output);
 }
 
