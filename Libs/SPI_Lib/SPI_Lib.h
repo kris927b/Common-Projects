@@ -13,5 +13,6 @@
 
 void SPI_Init_Master(void);
 void SPI_Send_Data(char data);
+void SPI_Send_Large_Data(char data[]);
 
-#endif
+#endif /* SPI_LIB_H_ */
