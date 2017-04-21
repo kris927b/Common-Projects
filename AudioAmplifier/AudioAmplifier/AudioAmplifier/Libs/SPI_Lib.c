@@ -10,11 +10,11 @@
 #include <string.h>
 #include "SPI_Lib.h"
 
-//Terminology of SPI
-//MOSI == "Master Out Slave In"
-//MISO == "Master In Slave Out"
-//SCK == SPI Clock Line
-//SS == "Slave Select
+//Terminology of SPI			|| Terminology of digital Pot meter
+//MOSI == "Master Out Slave In" || SPO
+//MISO == "Master In Slave Out" || SPI
+//SCK == SPI Clock Line			|| SCK
+//SS == "Slave Select			|| CS == "Chip Select"
  
  
 void SPI_Init_Master() {
