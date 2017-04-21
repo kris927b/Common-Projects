@@ -17,11 +17,13 @@
 //Include LCD library
 
 //Functionality for the four tasks
-
+//Function to update display
+//Function to turn off display
+//Function to change menu_item
 
 //Flags for different task
 uint8_t display_FLAG = 0; //When to update the display (every 100 ms)
-uint8_t back_light_FLAG = 0; //When to turn of back light on the display (after 2 sec.)
+uint8_t back_light_FLAG = 0; //When to turn of backlight on the display (after 2 sec.)
 uint8_t activity_FLAG = 0; //Are there any activity
 
 //Booleans for different tasks
@@ -39,7 +41,15 @@ int main(void)
     /* Replace with your application code */
     while (1) 
     {
-		if(display_FLAG == 10)
+		if(display_task) {
+			//Update the display
+			//Set the flag value to start again
+		}
+
+		if(back_light_task) {
+			//Turn of the back_light 
+
+		}
     }
 }
 
