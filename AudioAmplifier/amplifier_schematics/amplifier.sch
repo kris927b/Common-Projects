@@ -34,7 +34,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 1 2
 Title ""
 Date ""
 Rev ""
@@ -71,4 +71,10 @@ F 8 "Digital Potentiometer 256POS 10kOhm Single Automotive 8-Pin PDIP Tube" H 74
 	1    7850 2600
 	1    0    0    -1  
 $EndComp
+$Sheet
+S 6350 3150 1900 3050
+U 58F9CBF8
+F0 "analogCircuit" 60
+F1 "analogCircuit.sch" 60
+$EndSheet
 $EndSCHEMATC

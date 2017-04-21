@@ -1,0 +1,183 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:amplifier_lib
+LIBS:amplifier-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 2
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L NE5532 U?
+U 1 1 58F9CC7B
+P 3200 2400
+F 0 "U?" H 3200 2600 50  0000 L CNN
+F 1 "NE5532" H 3200 2200 50  0000 L CNN
+F 2 "" H 3200 2400 50  0000 C CNN
+F 3 "" H 3200 2400 50  0000 C CNN
+	1    3200 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L NE5532 U?
+U 2 1 58F9CD10
+P 3200 5100
+F 0 "U?" H 3200 5300 50  0000 L CNN
+F 1 "NE5532" H 3200 4900 50  0000 L CNN
+F 2 "" H 3200 5100 50  0000 C CNN
+F 3 "" H 3200 5100 50  0000 C CNN
+	2    3200 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR?
+U 1 1 58F9CD63
+P 3100 2050
+F 0 "#PWR?" H 3100 1900 50  0001 C CNN
+F 1 "+12V" H 3100 2190 50  0000 C CNN
+F 2 "" H 3100 2050 50  0000 C CNN
+F 3 "" H 3100 2050 50  0000 C CNN
+	1    3100 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L +12V #PWR?
+U 1 1 58F9CD7D
+P 3100 4750
+F 0 "#PWR?" H 3100 4600 50  0001 C CNN
+F 1 "+12V" H 3100 4890 50  0000 C CNN
+F 2 "" H 3100 4750 50  0000 C CNN
+F 3 "" H 3100 4750 50  0000 C CNN
+	1    3100 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 2050 3100 2100
+$Comp
+L -12VA #PWR?
+U 1 1 58F9CE3A
+P 3300 5550
+F 0 "#PWR?" H 3300 5400 50  0001 C CNN
+F 1 "-12VA" H 3300 5690 50  0000 C CNN
+F 2 "" H 3300 5550 50  0000 C CNN
+F 3 "" H 3300 5550 50  0000 C CNN
+	1    3300 5550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 5550 3300 5600
+Wire Wire Line
+	3300 5600 3100 5600
+Wire Wire Line
+	3100 5600 3100 5400
+$Comp
+L -12VA #PWR?
+U 1 1 58F9CF27
+P 3300 2850
+F 0 "#PWR?" H 3300 2700 50  0001 C CNN
+F 1 "-12VA" H 3300 2990 50  0000 C CNN
+F 2 "" H 3300 2850 50  0000 C CNN
+F 3 "" H 3300 2850 50  0000 C CNN
+	1    3300 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 2850 3300 2900
+Wire Wire Line
+	3300 2900 3100 2900
+Wire Wire Line
+	3100 2900 3100 2700
+Wire Wire Line
+	3100 4750 3100 4800
+Text HLabel 2350 2300 0    60   Input ~ 0
+LEFT_IN
+Text HLabel 2350 5000 0    60   Input ~ 0
+RIGHT_IN
+Wire Wire Line
+	2350 2300 2900 2300
+Wire Wire Line
+	2900 5000 2350 5000
+$Comp
+L MCP4161-103E/P U?
+U 1 1 58F9CF6A
+P 3300 3400
+F 0 "U?" H 3700 3550 50  0000 L CNN
+F 1 "MCP4161-103E/P" H 3400 2900 50  0000 L CNN
+F 2 "DIP254P762X533-8" H 3450 3900 50  0001 L CNN
+F 3 "PDIP-8 Microchip" H 3450 4000 50  0001 L CNN
+F 4 "MCP4161-103E/P" H 3450 3700 50  0001 L CNN "MP"
+F 5 "0.80 USD" H 3600 4250 50  0001 L CNN "Price"
+F 6 "Good" H 3700 4150 50  0001 L CNN "Availability"
+F 7 "Microchip" H 3600 4100 50  0001 L CNN "MF"
+F 8 "Digital Potentiometer 256POS 10kOhm Single Automotive 8-Pin PDIP Tube" H 2900 3800 50  0001 L CNN "Description"
+	1    3300 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR?
+U 1 1 58F9D059
+P 4250 3350
+F 0 "#PWR?" H 4250 3200 50  0001 C CNN
+F 1 "+5V" H 4250 3490 50  0000 C CNN
+F 2 "" H 4250 3350 50  0000 C CNN
+F 3 "" H 4250 3350 50  0000 C CNN
+	1    4250 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 58F9D076
+P 3250 3750
+F 0 "#PWR?" H 3250 3500 50  0001 C CNN
+F 1 "GND" H 3250 3600 50  0000 C CNN
+F 2 "" H 3250 3750 50  0000 C CNN
+F 3 "" H 3250 3750 50  0000 C CNN
+	1    3250 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4200 3400 4250 3400
+Wire Wire Line
+	4250 3400 4250 3350
+Wire Wire Line
+	3300 3700 3250 3700
+Wire Wire Line
+	3250 3700 3250 3750
+$EndSCHEMATC
