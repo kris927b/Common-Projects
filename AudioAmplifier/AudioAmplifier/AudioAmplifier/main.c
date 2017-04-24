@@ -9,15 +9,16 @@
 #include <stdbool.h>
 
 /* Our own libraries, found in the Libs folder in the project */
-#include "Libs/Dig_Pot_Lib.h" //Library for the digital pot meter
-#include "Libs/SPI_Lib.h" //Library for SPI functionality
-#include "Libs/std_lib.h" //Library for common functions that are useful
-#include "Libs/usart_lib.h" //Library for Usart
-//Include TWI library
-//Include LCD library
+#include "Libs/Dig_Pot_Lib.h"	//Library for the digital pot meter
+#include "Libs/SPI_Lib.h"		//Library for SPI functionality
+#include "Libs/std_lib.h"		//Library for common functions that are useful
+#include "Libs/usart_lib.h"		//Library for Usart
+#include "Libs/i2cLib.h"		//Library for TWI
+#include "Libs/LCD_lib.h"		//Library for the LCD
 
 //Functionality for the four tasks
 //Function to update display
+void update_display(void);
 //Function to turn off display
 //Function to change menu_item
 
@@ -30,12 +31,15 @@ uint8_t activity_FLAG = 0; //Are there any activity
 bool display_task = false;
 bool back_light_task = false;
 
+//Menu titles
+
+
 int main(void)
 {
 	
 	init_usart(9600, NONE, ONE);
 	Init_Pot_Meter();
-	// Init the LCD
+	i2cInit();
 
 
     /* Replace with your application code */
@@ -43,6 +47,7 @@ int main(void)
     {
 		if(display_task) {
 			//Update the display
+			
 			//Set the flag value to start again
 		}
 
@@ -53,3 +58,6 @@ int main(void)
     }
 }
 
+void update_display() {
+	//Send the menu item to the display
+}
