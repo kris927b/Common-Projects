@@ -23,7 +23,7 @@
 
 //Flags for different task
 uint8_t display_FLAG = 0; //When to update the display (every 100 ms)
-uint8_t back_light_FLAG = 0; //When to turn of backlight on the display (after 2 sec.)
+uint8_t back_light_FLAG = 0; //When to turn of back light on the display (after 2 sec.)
 uint8_t activity_FLAG = 0; //Are there any activity
 
 //Booleans for different tasks
