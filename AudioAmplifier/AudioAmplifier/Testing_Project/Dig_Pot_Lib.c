@@ -18,6 +18,7 @@ void Init_Pot_Meter() {
 void Write_Pot_Meter(uint8_t value, uint8_t CS_pin) {
 	CS &= ~(1 << CS_pin);
 	uint8_t data[2] = {0b00100000, value};
-	SPI_Send_Large_Data(data);
+	uint8_t *spi_data;
+	spi_data = SPI_Send_Large_Data(data);
 	CS |= (1 << CS_pin);
 } 
