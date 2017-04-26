@@ -41,20 +41,22 @@ int main(void)
 	Init_Pot_Meter();
 	i2cInit();
 
+	Write_Pot_Meter(10, CS_1);
 
     /* Replace with your application code */
     while (1) 
     {
-		if(display_task) {
-			//Update the display
-			
-			//Set the flag value to start again
-		}
 
-		if(back_light_task) {
-			//Turn of the back_light 
-
-		}
+// 		if(display_task) {
+// 			//Update the display
+// 			
+// 			//Set the flag value to start again
+// 		}
+// 
+// 		if(back_light_task) {
+// 			//Turn of the back_light 
+// 
+// 		}
     }
 }
 

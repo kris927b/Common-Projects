@@ -1,3 +1,4 @@
+#include <avr/io.h>
 #include "i2cLib.h"
 
 void i2cInit(){
