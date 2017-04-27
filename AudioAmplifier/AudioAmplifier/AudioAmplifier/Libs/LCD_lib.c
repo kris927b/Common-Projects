@@ -6,6 +6,7 @@
  */ 
 
  #include "i2cLib.h"
+ #include "LCD_lib.h"
 
 void send_screen_data(unsigned char data) {
 	//Send start condition

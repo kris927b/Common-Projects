@@ -24,23 +24,21 @@ void SPI_Init_Master() {
 	PORTB &= ~(1 << PINB5);
 	
 	/* Enable SPI */
-	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0); 
+	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0) | (1 << SPR1); 
 }
 
-void SPI_Send_Data(char data) {
+void SPI_Send_Data(uint8_t data) {
 	/* Place the data in the transmitter buffer */
 	SPDR = data;
 
 	/* Wait for the transmitter to complete */
-	while(!(SPDR & (1 << SPIF)));
+	while(!(SPSR & (1 << SPIF)));
 }
 
-void SPI_Send_Large_Data(char *data) {
+void SPI_Send_Large_Data(uint8_t *data) {
 	/* Find the length of the data array */
-	uint16_t len = strlen(data);
+	uint16_t len = 2;
 	for(int i = 0; i < len; i++) {
 		SPI_Send_Data(data[i]);
 	}
-
-
 }

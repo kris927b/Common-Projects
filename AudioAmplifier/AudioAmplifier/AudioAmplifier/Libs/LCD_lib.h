@@ -11,7 +11,7 @@
 
 #define ADDR 0x7C
 
-void send_screen_data(char data);
+void send_screen_data(unsigned char data);
 
 
 

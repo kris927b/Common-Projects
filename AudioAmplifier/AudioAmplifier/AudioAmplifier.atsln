@@ -7,6 +7,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "AudioAmplifier", "AudioAmpl
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Testing_Project", "Testing_Project\Testing_Project.cproj", "{A9328AA8-5C0F-45BF-A4E2-B46396649EB8}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Tetst_2", "Tetst_2\Tetst_2.cproj", "{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -21,6 +23,10 @@ Global
 		{A9328AA8-5C0F-45BF-A4E2-B46396649EB8}.Debug|AVR.Build.0 = Debug|AVR
 		{A9328AA8-5C0F-45BF-A4E2-B46396649EB8}.Release|AVR.ActiveCfg = Release|AVR
 		{A9328AA8-5C0F-45BF-A4E2-B46396649EB8}.Release|AVR.Build.0 = Release|AVR
+		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Debug|AVR.ActiveCfg = Debug|AVR
+		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Debug|AVR.Build.0 = Debug|AVR
+		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Release|AVR.ActiveCfg = Release|AVR
+		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

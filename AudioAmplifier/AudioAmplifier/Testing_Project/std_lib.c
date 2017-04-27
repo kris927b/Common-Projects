@@ -105,6 +105,6 @@ void digitalWrite(int pin, int value) {
 
 /* Delay function by Farzad */
 void delay(uint32_t ms) {
-	uint32_t i = ms * 471;
+	uint32_t i = ms * 480;
 	while(--i > 0);
 }

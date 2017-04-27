@@ -12,7 +12,7 @@
 #include <avr/io.h>
 
 void SPI_Init_Master(void);
-void SPI_Send_Data(char data);
-void SPI_Send_Large_Data(char data[]);
+uint8_t SPI_Send_Data(uint8_t data);
+uint8_t * SPI_Send_Large_Data(uint8_t data[]);
 
 #endif /* SPI_LIB_H_ */

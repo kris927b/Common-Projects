@@ -199,11 +199,7 @@ Wire Wire Line
 Wire Wire Line
 	6300 1600 6450 1600
 Wire Wire Line
-	6450 1500 6450 1600
-Wire Wire Line
-	6450 1600 6450 1900
-Wire Wire Line
-	6450 1900 6450 2300
+	6450 1500 6450 2300
 Wire Wire Line
 	6450 1900 6300 1900
 Wire Wire Line
@@ -241,15 +237,11 @@ Wire Wire Line
 Wire Wire Line
 	6300 2200 6350 2200
 Wire Wire Line
-	6350 2200 6350 2700
-Wire Wire Line
-	6350 2700 6350 3100
+	6350 2200 6350 3100
 Wire Wire Line
 	6300 2100 6400 2100
 Wire Wire Line
-	6400 2100 6400 2500
-Wire Wire Line
-	6400 2500 6400 2950
+	6400 2100 6400 2950
 $Comp
 L R R?
 U 1 1 58FDA595
@@ -281,9 +273,7 @@ Connection ~ 6350 2700
 Wire Wire Line
 	6850 2700 6750 2700
 Wire Wire Line
-	6850 2400 6850 2500
-Wire Wire Line
-	6850 2500 6850 2700
+	6850 2400 6850 2700
 Wire Wire Line
 	6850 2500 6750 2500
 Connection ~ 6850 2500
@@ -363,9 +353,29 @@ Wire Wire Line
 Text GLabel 3600 2250 2    60   Input ~ 0
 MOSI
 Text GLabel 3600 2050 2    60   Input ~ 0
-CLK
+SCK
 Wire Wire Line
 	3600 2050 3550 2050
 Wire Wire Line
 	3550 2250 3600 2250
+Text GLabel 7750 3700 0    60   Input ~ 0
+CS_0
+Text GLabel 7750 3850 0    60   Input ~ 0
+CS_1
+Text GLabel 7750 4000 0    60   Input ~ 0
+CS_2
+Text GLabel 7750 4200 0    60   Input ~ 0
+MOSI
+Text GLabel 7750 4350 0    60   Input ~ 0
+SCK
+Wire Wire Line
+	7750 3700 7900 3700
+Wire Wire Line
+	7750 3850 7900 3850
+Wire Wire Line
+	7750 4000 7900 4000
+Wire Wire Line
+	7750 4200 7900 4200
+Wire Wire Line
+	7750 4350 7900 4350
 $EndSCHEMATC

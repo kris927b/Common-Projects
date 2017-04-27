@@ -18,6 +18,6 @@
 #include <avr/io.h>
 
 void Init_Pot_Meter(void);
-void Write_Pot_Meter(uint8_t value, uint8_t CS_pin);
+uint8_t * Write_Pot_Meter(uint8_t value, uint8_t CS_pin);
 
 #endif /* DIG_POT_LIB_H_ */
