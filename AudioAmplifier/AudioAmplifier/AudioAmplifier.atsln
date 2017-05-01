@@ -9,6 +9,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Testing_Project", "Testing_
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "Tetst_2", "Tetst_2\Tetst_2.cproj", "{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "I2C_Test", "I2C_Test\I2C_Test.cproj", "{E3A1181D-6085-434F-932C-65C4FCEB2902}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -27,6 +29,10 @@ Global
 		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Debug|AVR.Build.0 = Debug|AVR
 		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Release|AVR.ActiveCfg = Release|AVR
 		{29EF6D1B-FC2D-436E-B43F-24E2AB74A38E}.Release|AVR.Build.0 = Release|AVR
+		{E3A1181D-6085-434F-932C-65C4FCEB2902}.Debug|AVR.ActiveCfg = Debug|AVR
+		{E3A1181D-6085-434F-932C-65C4FCEB2902}.Debug|AVR.Build.0 = Debug|AVR
+		{E3A1181D-6085-434F-932C-65C4FCEB2902}.Release|AVR.ActiveCfg = Release|AVR
+		{E3A1181D-6085-434F-932C-65C4FCEB2902}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
