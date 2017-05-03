@@ -1,4 +1,4 @@
-main.d main.o: .././main.c \
+std_lib.d std_lib.o: .././std_lib.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -10,10 +10,7 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././Libs/Dig_Pot_Lib.h .././Libs/SPI_Lib.h .././Libs/std_lib.h \
- .././Libs/usart_lib.h .././Libs/i2cLib.h .././Libs/LCD_lib.h \
- .././Libs/i2cLib.h
+ .././std_lib.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -37,18 +34,4 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
-
-.././Libs/Dig_Pot_Lib.h:
-
-.././Libs/SPI_Lib.h:
-
-.././Libs/std_lib.h:
-
-.././Libs/usart_lib.h:
-
-.././Libs/i2cLib.h:
-
-.././Libs/LCD_lib.h:
-
-.././Libs/i2cLib.h:
+.././std_lib.h:

@@ -3,31 +3,31 @@ Rotary_safe.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         0000000c  00800100  000008e8  0000097c  2**0
+  0 .data         0000000c  00800100  000008f8  0000098c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000008e8  00000000  00000000  00000094  2**1
+  1 .text         000008f8  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000006  0080010c  0080010c  00000988  2**0
+  2 .bss          00000006  0080010c  0080010c  00000998  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000988  2**0
+  3 .comment      00000030  00000000  00000000  00000998  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000009b8  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000009c8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000090  00000000  00000000  000009f8  2**0
+  5 .debug_aranges 00000090  00000000  00000000  00000a08  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000009bb  00000000  00000000  00000a88  2**0
+  6 .debug_info   000009bb  00000000  00000000  00000a98  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000007c1  00000000  00000000  00001443  2**0
+  7 .debug_abbrev 000007c1  00000000  00000000  00001453  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000006d6  00000000  00000000  00001c04  2**0
+  8 .debug_line   000006e2  00000000  00000000  00001c14  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000015c  00000000  00000000  000022dc  2**2
+  9 .debug_frame  0000015c  00000000  00000000  000022f8  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000443  00000000  00000000  00002438  2**0
+ 10 .debug_str    000004b7  00000000  00000000  00002454  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000025e  00000000  00000000  0000287b  2**0
+ 11 .debug_loc    0000025e  00000000  00000000  0000290b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000090  00000000  00000000  00002ad9  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  00002b69  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -72,7 +72,7 @@ Disassembly of section .text:
   74:	11 e0       	ldi	r17, 0x01	; 1
   76:	a0 e0       	ldi	r26, 0x00	; 0
   78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	e8 ee       	ldi	r30, 0xE8	; 232
+  7a:	e8 ef       	ldi	r30, 0xF8	; 248
   7c:	f8 e0       	ldi	r31, 0x08	; 8
   7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
   80:	05 90       	lpm	r0, Z+
@@ -95,7 +95,7 @@ Disassembly of section .text:
   96:	b2 07       	cpc	r27, r18
   98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
   9a:	0e 94 c3 03 	call	0x786	; 0x786 <main>
-  9e:	0c 94 72 04 	jmp	0x8e4	; 0x8e4 <_exit>
+  9e:	0c 94 7a 04 	jmp	0x8f4	; 0x8f4 <_exit>
 
 000000a2 <__bad_interrupt>:
   a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -1177,7 +1177,7 @@ void delay(uint32_t ms) {
  738:	87 ed       	ldi	r24, 0xD7	; 215
  73a:	91 e0       	ldi	r25, 0x01	; 1
  73c:	dc 01       	movw	r26, r24
- 73e:	0e 94 58 04 	call	0x8b0	; 0x8b0 <__muluhisi3>
+ 73e:	0e 94 60 04 	call	0x8c0	; 0x8c0 <__muluhisi3>
  742:	dc 01       	movw	r26, r24
  744:	cb 01       	movw	r24, r22
  746:	89 83       	std	Y+1, r24	; 0x01
@@ -1312,7 +1312,7 @@ int main(void) {
 			} else {
 				//No: 
 				reset(); //Reset variables
- 84a:	0e 94 43 04 	call	0x886	; 0x886 <reset>
+ 84a:	0e 94 4b 04 	call	0x896	; 0x896 <reset>
 				blink_LED();//Blink the LED fast and reset everything
  84e:	0e 94 b5 00 	call	0x16a	; 0x16a <blink_LED>
 			}
@@ -1344,71 +1344,79 @@ int main(void) {
  870:	fc 01       	movw	r30, r24
  872:	80 81       	ld	r24, Z
  874:	88 23       	and	r24, r24
- 876:	34 f0       	brlt	.+12     	; 0x884 <main+0xfe>
+ 876:	74 f0       	brlt	.+28     	; 0x894 <main+0x10e>
 			locked = 1;
  878:	81 e0       	ldi	r24, 0x01	; 1
  87a:	90 e0       	ldi	r25, 0x00	; 0
  87c:	90 93 03 01 	sts	0x0103, r25	; 0x800103 <locked+0x1>
  880:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <locked>
+			reset();
+ 884:	0e 94 4b 04 	call	0x896	; 0x896 <reset>
+			digitalWrite(B5, LOW);
+ 888:	60 e0       	ldi	r22, 0x00	; 0
+ 88a:	70 e0       	ldi	r23, 0x00	; 0
+ 88c:	8d e0       	ldi	r24, 0x0D	; 13
+ 88e:	90 e0       	ldi	r25, 0x00	; 0
+ 890:	0e 94 c6 02 	call	0x58c	; 0x58c <digitalWrite>
 		}
     }
- 884:	86 cf       	rjmp	.-244    	; 0x792 <main+0xc>
+ 894:	7e cf       	rjmp	.-260    	; 0x792 <main+0xc>
 
-00000886 <reset>:
+00000896 <reset>:
 }
 
 void reset(void) {
- 886:	cf 93       	push	r28
- 888:	df 93       	push	r29
- 88a:	cd b7       	in	r28, 0x3d	; 61
- 88c:	de b7       	in	r29, 0x3e	; 62
+ 896:	cf 93       	push	r28
+ 898:	df 93       	push	r29
+ 89a:	cd b7       	in	r28, 0x3d	; 61
+ 89c:	de b7       	in	r29, 0x3e	; 62
 	detent = 0;
- 88e:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <detent+0x1>
- 892:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <detent>
+ 89e:	10 92 0f 01 	sts	0x010F, r1	; 0x80010f <detent+0x1>
+ 8a2:	10 92 0e 01 	sts	0x010E, r1	; 0x80010e <detent>
 	c_Digit = 0;
- 896:	10 92 0d 01 	sts	0x010D, r1	; 0x80010d <__data_end+0x1>
- 89a:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <__data_end>
+ 8a6:	10 92 0d 01 	sts	0x010D, r1	; 0x80010d <__data_end+0x1>
+ 8aa:	10 92 0c 01 	sts	0x010C, r1	; 0x80010c <__data_end>
 	DR = 1;
- 89e:	81 e0       	ldi	r24, 0x01	; 1
- 8a0:	90 e0       	ldi	r25, 0x00	; 0
- 8a2:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <DR+0x1>
- 8a6:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <DR>
+ 8ae:	81 e0       	ldi	r24, 0x01	; 1
+ 8b0:	90 e0       	ldi	r25, 0x00	; 0
+ 8b2:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <DR+0x1>
+ 8b6:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <DR>
 }
- 8aa:	df 91       	pop	r29
- 8ac:	cf 91       	pop	r28
- 8ae:	08 95       	ret
+ 8ba:	df 91       	pop	r29
+ 8bc:	cf 91       	pop	r28
+ 8be:	08 95       	ret
 
-000008b0 <__muluhisi3>:
- 8b0:	0e 94 63 04 	call	0x8c6	; 0x8c6 <__umulhisi3>
- 8b4:	a5 9f       	mul	r26, r21
- 8b6:	90 0d       	add	r25, r0
- 8b8:	b4 9f       	mul	r27, r20
- 8ba:	90 0d       	add	r25, r0
- 8bc:	a4 9f       	mul	r26, r20
- 8be:	80 0d       	add	r24, r0
- 8c0:	91 1d       	adc	r25, r1
- 8c2:	11 24       	eor	r1, r1
- 8c4:	08 95       	ret
+000008c0 <__muluhisi3>:
+ 8c0:	0e 94 6b 04 	call	0x8d6	; 0x8d6 <__umulhisi3>
+ 8c4:	a5 9f       	mul	r26, r21
+ 8c6:	90 0d       	add	r25, r0
+ 8c8:	b4 9f       	mul	r27, r20
+ 8ca:	90 0d       	add	r25, r0
+ 8cc:	a4 9f       	mul	r26, r20
+ 8ce:	80 0d       	add	r24, r0
+ 8d0:	91 1d       	adc	r25, r1
+ 8d2:	11 24       	eor	r1, r1
+ 8d4:	08 95       	ret
 
-000008c6 <__umulhisi3>:
- 8c6:	a2 9f       	mul	r26, r18
- 8c8:	b0 01       	movw	r22, r0
- 8ca:	b3 9f       	mul	r27, r19
- 8cc:	c0 01       	movw	r24, r0
- 8ce:	a3 9f       	mul	r26, r19
- 8d0:	70 0d       	add	r23, r0
- 8d2:	81 1d       	adc	r24, r1
- 8d4:	11 24       	eor	r1, r1
- 8d6:	91 1d       	adc	r25, r1
- 8d8:	b2 9f       	mul	r27, r18
- 8da:	70 0d       	add	r23, r0
- 8dc:	81 1d       	adc	r24, r1
- 8de:	11 24       	eor	r1, r1
- 8e0:	91 1d       	adc	r25, r1
- 8e2:	08 95       	ret
+000008d6 <__umulhisi3>:
+ 8d6:	a2 9f       	mul	r26, r18
+ 8d8:	b0 01       	movw	r22, r0
+ 8da:	b3 9f       	mul	r27, r19
+ 8dc:	c0 01       	movw	r24, r0
+ 8de:	a3 9f       	mul	r26, r19
+ 8e0:	70 0d       	add	r23, r0
+ 8e2:	81 1d       	adc	r24, r1
+ 8e4:	11 24       	eor	r1, r1
+ 8e6:	91 1d       	adc	r25, r1
+ 8e8:	b2 9f       	mul	r27, r18
+ 8ea:	70 0d       	add	r23, r0
+ 8ec:	81 1d       	adc	r24, r1
+ 8ee:	11 24       	eor	r1, r1
+ 8f0:	91 1d       	adc	r25, r1
+ 8f2:	08 95       	ret
 
-000008e4 <_exit>:
- 8e4:	f8 94       	cli
+000008f4 <_exit>:
+ 8f4:	f8 94       	cli
 
-000008e6 <__stop_program>:
- 8e6:	ff cf       	rjmp	.-2      	; 0x8e6 <__stop_program>
+000008f6 <__stop_program>:
+ 8f6:	ff cf       	rjmp	.-2      	; 0x8f6 <__stop_program>
