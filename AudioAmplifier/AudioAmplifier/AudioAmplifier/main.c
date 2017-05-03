@@ -7,6 +7,7 @@
 
 #include <avr/io.h>
 #include <stdbool.h>
+#include <avr/interrupt.h>
 
 /* Our own libraries, found in the Libs folder in the project */
 #include "Libs/Dig_Pot_Lib.h"	//Library for the digital pot meter
@@ -22,6 +23,9 @@ void update_display(void);
 //Function to turn off display
 //Function to change menu_item
 
+//Index for volumes
+uint8_t bass_index;
+
 //Flags for different task
 uint8_t display_FLAG = 0; //When to update the display (every 100 ms)
 uint8_t back_light_FLAG = 0; //When to turn of back light on the display (after 2 sec.)
@@ -33,6 +37,21 @@ bool back_light_task = false;
 
 //Menu titles
 
+ISR(PCINT1_vect) {
+	usart_transmit_char('P');
+	if((PINC & (1 << PINC0)) == 0){
+		if (PINC & (1 << PINC1)){ //CW
+			if (bass_index > 0){
+				--bass_index; 
+				usart_transmit_char('C'); }
+		} else { //CCW
+			if (bass_index < 17) {
+				++bass_index; 
+				usart_transmit_char('W'); }
+		}
+	}
+}
+
 
 int main(void)
 {
@@ -40,13 +59,20 @@ int main(void)
 	init_usart(9600, NONE, ONE);
 	Init_Pot_Meter();
 	i2cInit();
+	initDisp();
 
+	PCICR |= (1 << PCIE1);
+	PCMSK1 |= (1 << PCINT8);
 	Write_Pot_Meter(10, CS_1);
-
-    /* Replace with your application code */
+	bass_index = 1;
+	uint8_t vol_values[16] = {0, 1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 255};
+	uint8_t vol = 12;
+	char *str = "Bass";
+	sei();
     while (1) 
     {
-
+		//write_first_line(str, 0);
+		write_volume_control(str, vol);
 // 		if(display_task) {
 // 			//Update the display
 // 			

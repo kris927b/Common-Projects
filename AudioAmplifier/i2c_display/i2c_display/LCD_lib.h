@@ -11,6 +11,8 @@
 void sendCmd(char data);
 void sendData(char data);
 void initDisp();
+void write_first_line(char *data, uint8_t menu);
+void write_second_line(char *data, uint8_t menu);
 
 
 #endif /* LCD_LIB_H_ */

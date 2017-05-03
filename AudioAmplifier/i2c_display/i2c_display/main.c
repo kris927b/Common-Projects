@@ -14,24 +14,15 @@
 
 int main(void)
 {
-    DDRD |= (1 << DDD3);
-    PORTD |= (1 << PORTD3);
     i2cInit();
     initDisp();
     sendCmd(0x01);
-    char *str = "Hejd\x86, Farzad"; // \x8F
+    char *str_1 = "1.Equalizer"; // \x8F
+	char *str_2 = "2.Reset";
     while (1) 
     {   
-        for (uint8_t i = 0x00; i <= 0x0F; i++){ //0x00-0x27 first line
-            sendCmd(0x00);
-            sendCmd(0x80 | i);
-            sendData(str[i]);
-        }
-        for (uint8_t i = 0x40; i <= 0x4F; i++){ //0x40-0x67 second line
-            sendCmd(0x00);
-            sendCmd(0x80 | i);
-            sendData(str[i-0x40]);
-        }
+        write_first_line(str_1, 1);
+		write_second_line(str_2, 1);
 
         delay(500);
     }

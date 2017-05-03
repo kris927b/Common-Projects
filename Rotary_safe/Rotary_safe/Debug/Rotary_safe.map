@@ -317,7 +317,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x8e8
+.text           0x00000000      0x8f8
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.1.130/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -423,21 +423,21 @@ END GROUP
                 0x0000058c                digitalWrite
  .text.delay    0x00000714       0x72 Lib/std_lib.o
                 0x00000714                delay
- .text.main     0x00000786      0x100 main.o
+ .text.main     0x00000786      0x110 main.o
                 0x00000786                main
- .text.reset    0x00000886       0x2a main.o
-                0x00000886                reset
+ .text.reset    0x00000896       0x2a main.o
+                0x00000896                reset
  .text.libgcc.mul
-                0x000008b0       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_muluhisi3.o)
-                0x000008b0                __muluhisi3
+                0x000008c0       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_muluhisi3.o)
+                0x000008c0                __muluhisi3
  .text.libgcc.mul
-                0x000008c6       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
-                0x000008c6                __umulhisi3
-                0x000008e4                . = ALIGN (0x2)
+                0x000008d6       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_umulhisi3.o)
+                0x000008d6                __umulhisi3
+                0x000008f4                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000008e4        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
-                0x000008e4                _exit
-                0x000008e4                exit
+ .fini9         0x000008f4        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+                0x000008f4                _exit
+                0x000008f4                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -456,11 +456,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000008e4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
+ .fini0         0x000008f4        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.9.2/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000008e8                _etext = .
+                0x000008f8                _etext = .
 
-.data           0x00800100        0xc load address 0x000008e8
+.data           0x00800100        0xc load address 0x000008f8
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -489,8 +489,8 @@ END GROUP
  COMMON         0x00800110        0x2 main.o
                 0x00800110                r_DR
                 0x00800112                PROVIDE (__bss_end, .)
-                0x000008e8                __data_load_start = LOADADDR (.data)
-                0x000008f4                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000008f8                __data_load_start = LOADADDR (.data)
+                0x00000904                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800112        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -589,12 +589,12 @@ END GROUP
  .debug_abbrev  0x00000662       0xb9 Lib/std_lib.o
  .debug_abbrev  0x0000071b       0xa6 main.o
 
-.debug_line     0x00000000      0x6d6
+.debug_line     0x00000000      0x6e2
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x133 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.1.130/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000133      0x1b6 Lib/rotEncLib.o
  .debug_line    0x000002e9      0x2b4 Lib/std_lib.o
- .debug_line    0x0000059d      0x139 main.o
+ .debug_line    0x0000059d      0x145 main.o
 
 .debug_frame    0x00000000      0x15c
  *(.debug_frame)
@@ -602,15 +602,15 @@ END GROUP
  .debug_frame   0x00000094       0x74 Lib/std_lib.o
  .debug_frame   0x00000108       0x54 main.o
 
-.debug_str      0x00000000      0x443
+.debug_str      0x00000000      0x4b7
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.1.130/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208      0x1ae Lib/rotEncLib.o
                                 0x1e2 (size before relaxing)
  .debug_str     0x000003b6       0x4d Lib/std_lib.o
                                 0x1d5 (size before relaxing)
- .debug_str     0x00000403       0x40 main.o
-                                0x1c8 (size before relaxing)
+ .debug_str     0x00000403       0xb4 main.o
+                                0x1cc (size before relaxing)
 
 .debug_loc      0x00000000      0x25e
  *(.debug_loc)
