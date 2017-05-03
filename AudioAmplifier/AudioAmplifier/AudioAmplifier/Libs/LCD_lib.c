@@ -4,7 +4,7 @@
 #include "LCD_lib.h"
 
 
-void sendCmd(char data){
+void sendCmd(char data) {
     i2cStart();
     i2cWrite(SLA_W);
     i2cWrite(0x00);
@@ -12,7 +12,7 @@ void sendCmd(char data){
     i2cStop();
 }
 
-void sendData(char data){
+void sendData(char data) {
     i2cStart();
     i2cWrite(SLA_W);
     i2cWrite(0x40);
@@ -20,7 +20,7 @@ void sendData(char data){
     i2cStop();
 }
 
-void initDisp(){
+void initDisp() {
 	DDRD |= (1 << DDD3);
 	PORTD |= (1 << PORTD3);
     i2cStart();
@@ -85,26 +85,26 @@ void write_second_line(char *data, uint8_t menu) {
 	}
 }
 
-void write_volume_control(char *name, uint8_t value) {
+void write_volume_control(char name[], uint8_t value) {
 	char line_1[17] = {32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 0};
 	char line_2[17] = {32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 0};
 	uint8_t size = strlen(name);
-
-	uint8_t vol_size = volume_size(value);
-
-	for(uint8_t i = 0; i < vol_size; i++) {
-		line_2[i] = '#';
-	}
-
-	char str[3];
-	sprintf(str, "%3d", value);
 
 	for (uint8_t i = 0; i < size; i++){
 		line_1[i] = name[i];
 	}
 
+	char str[3];
+	sprintf(str, "%3d", value);
+
 	for (uint8_t i = 13; i < 16; i++) {
 		line_1[i] = str[i - 13];
+	}
+
+	uint8_t vol_size = volume_size(value);
+
+	for(uint8_t i = 0; i < vol_size; i++) {
+		line_2[i] = '#';
 	}
 
 	write_first_line(line_1, 0);
@@ -162,4 +162,22 @@ uint8_t volume_size(uint8_t value) {
 			return 16;
 			break;
 	}
+}
+
+void write_menu_items(char item_1[], char item_2[]) {
+	char line_1[17] = {32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 0};
+	char line_2[17] = {32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 0};
+	uint8_t size_1 = strlen(item_1);
+	uint8_t size_2 = strlen(item_2);
+
+	for (uint8_t i = 0; i < size_1; i++){
+		line_1[i] = item_1[i];
+	}
+
+	for (uint8_t i = 0; i < size_2; i++){
+		line_2[i] = item_2[i];
+	}
+
+	write_first_line(line_1, 1);
+	write_second_line(line_2, 1);
 }

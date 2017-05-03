@@ -15,6 +15,7 @@ void write_first_line(char *data, uint8_t menu);
 void write_second_line(char *data, uint8_t menu);
 void write_volume_control(char *name, uint8_t value);
 uint8_t volume_size(uint8_t value);
+void write_menu_items(char item_1[], char item_2[]);
 
 
 #endif /* LCD_LIB_H_ */
