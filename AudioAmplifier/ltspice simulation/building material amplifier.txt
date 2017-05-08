@@ -1,0 +1,32 @@
+1st stage inverter amp
+R1 = 4.7k
+R2 = 10K (potentionmeter)
+
+2nd stage High pass
+C1 = 220nF
+R1 = 470
+R2 = 390
+After a 10K potentionmeter
+
+2nd stage Bandpass
+R1 = 1k
+R2 = 470
+C1 = 330nF
+C2 = 220nF
+After a 10k potentionmeter
+
+2nd stage Lowpass
+R1 = 1k
+R2 = 820
+C1 = 330nF
+After a 10k potentionmeter
+
+3rd stage Summing inverter
+R1 = 10K
+R1 = 10K
+R1 = 10K
+R2 = 5.6
+
+4th stage inverting
+R1 = 3.6
+R2 = 10k
