@@ -45,7 +45,7 @@ void write_first_line(char *data, uint8_t menu) {
 	uint16_t j = 0;
 
 	if(menu) {
-		str[0] = '\x7E';
+		str[0] = '>';
 		i = 1;
 		len++;
 	}
