@@ -28,8 +28,7 @@ void update_display_values(uint8_t device, uint8_t direction);	// Device: 1 = ro
 void initBrightnessTimer(void);
 void setBrightness(uint8_t brightness);
 void showScreenSaver(void);
-//Function to turn off display
-//Function to change menu_item
+void update_system(void);
 
 //Index for volumes
 uint8_t vol_index[5] = {7, 7, 7, 7, 15};
@@ -192,6 +191,7 @@ void update_display_values(uint8_t device, uint8_t direction) {
 					if (ctrl_menu_FLAG) {					//If we are in a control menu
 						if(vol_index[ctrl_index] < 15) {	//If the vol index is less than 15, we can increment it
 							vol_index[ctrl_index]++;
+							update_system();
 						}
 					} else {								//If we are not in a ctrl menu, then we must be scrolling through the equalizer menu
 						if (equalizer_menu_index < 3){		//As long as the index of the menu is less than 3 we are able to scroll further down
@@ -199,7 +199,7 @@ void update_display_values(uint8_t device, uint8_t direction) {
 						}
 					}
 				} else if(ctrl_menu_FLAG){					//If we are not in the equalizer menu and the ctrl menu flag is set, we must be in the brightness menu
-					if(vol_index[ctrl_index] < 15) {		//So if the index is less than 15 we ca increment it, just like with the equalizer above	
+					if(vol_index[ctrl_index] < 15) {		//So if the index is less than 15 we can increment it, just like with the equalizer above	
 						vol_index[ctrl_index]++;
 					}
 				} else {									//If we are not in the equalizer menu, and we are not in the ctrl menu,
@@ -210,6 +210,7 @@ void update_display_values(uint8_t device, uint8_t direction) {
 			} else {
 				if(vol_index[ctrl_index] < 15) {			//If we are not in a menu we must be controlling the master volume.
 					vol_index[ctrl_index]++;				//So if the index of the volume is no larger than 15, we want to increment the volume
+					update_system();
 				}
 			}
 		} else {											//Else the direction must be down
@@ -218,6 +219,7 @@ void update_display_values(uint8_t device, uint8_t direction) {
 					if (ctrl_menu_FLAG) {					//If we are in a ctrl menu
 						if(vol_index[ctrl_index] > 0) {		//If the ctrl index is still bigger than zero, then we can decrement it.
 							vol_index[ctrl_index]--;
+							update_system();
 						}
 					} else {								//If we re not in a control menu, we must be scrolling through the EQ menu.
 						if (equalizer_menu_index > 0) {		//As long as the index is larger than zero, we can scroll through the menu points
@@ -236,6 +238,7 @@ void update_display_values(uint8_t device, uint8_t direction) {
 			} else {										//If we are not in the menu, We must be controlling the master volume
 				if(vol_index[ctrl_index] > 0) {				//If the ctrl index is bigger than zero, then we can decrement the master volume
 					vol_index[ctrl_index]--;
+					update_system();
 				}
 			}
 		}
@@ -275,7 +278,11 @@ void update_display_values(uint8_t device, uint8_t direction) {
 							break;
 						case 2:								//If we are highlighting Reset, then we wanna reset all values
 							for(uint8_t i = 0; i < 5; i++) {//Reset the values
-								vol_index[i] = 7;
+								if (i >= 4) {
+									vol_index[i] = 15;
+								} else {
+									vol_index[i] = 7;
+								}
 							}
 							break;
 						case 3:
@@ -357,5 +364,24 @@ void showScreenSaver() {
 		write_second_line(line, 0);
 	} else if (screen_saver_pos_idx == 20) {
 		screen_saver_pos_idx = 0;
+	}
+}
+
+void update_system() {
+	switch (ctrl_index) {
+		case 0:
+			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_0);
+			break;
+		case 1:
+			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_1);
+			break;
+		case 2:
+			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_2);
+			break;
+		case 3:
+			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_3);
+			break;
+		default:
+			break;
 	}
 }

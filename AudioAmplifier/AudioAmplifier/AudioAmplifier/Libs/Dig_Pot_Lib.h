@@ -9,9 +9,10 @@
 #ifndef DIG_POT_LIB_H_
 #define DIG_POT_LIB_H_
 
-#define CS_1 PINB0 // Master Pot meter
-#define CS_2 PINB1 // Bass Pot meter
-#define CS_3 PINB2 // Treble Pot meter
+#define CS_0 PINB0 // Master Pot meter
+#define CS_1 PINB1 // Bass Pot meter
+#define CS_2 PINB2 // Mid Pot meter
+#define CS_3 PINB4 // Treble Pot meter
 #define CS_D DDRB
 #define CS PORTB
 

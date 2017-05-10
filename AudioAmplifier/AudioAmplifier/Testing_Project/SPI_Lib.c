@@ -27,23 +27,19 @@ void SPI_Init_Master() {
 	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0); 
 }
 
-uint8_t SPI_Send_Data(uint8_t data) {
+void SPI_Send_Data(uint8_t data) {
 	/* Place the data in the transmitter buffer */
 	SPDR = data;
 
 	/* Wait for the transmitter to complete */
 	while(!(SPSR & (1 << SPIF)));
-
-	return SPDR;
 }
 
-uint8_t * SPI_Send_Large_Data(uint8_t *data) {
+void SPI_Send_Large_Data(uint8_t *data) {
 	/* Find the length of the data array */
 	uint16_t len = 2;
 	uint8_t spi_data[len];
 	for(int i = 0; i < len; i++) {
-		spi_data[i] = SPI_Send_Data(data[i]);
+		SPI_Send_Data(data[i]);
 	}
-
-	return spi_data;
 }
