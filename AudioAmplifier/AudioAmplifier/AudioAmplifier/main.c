@@ -173,6 +173,18 @@ void update_display() {
 }
 
 void update_display_values(uint8_t device, uint8_t direction) {
+	/************************************************************************/
+	/* Menu overview:														*/
+	/*	Master Volume			(Ctrl Menu)									*/
+	/*	-> 1.Equalizer			(Main menu)									*/
+	/*	-> -> 1.Bass			(EQ Menu)									*/
+	/*  -> -> 2.Mid-range		(EQ Menu)									*/
+	/*	-> -> 3.Treble			(EQ Menu)									*/
+	/*	-> -> 4.Back			(EQ Menu)									*/
+	/*	-> 2.Brightness			(Main Menu)									*/
+	/*  -> 3.Reset				(Main Menu)									*/
+	/*  -> 4.Exit				(Main Menu)									*/
+	/************************************************************************/
 	if (device) {											//If the device is the rotary encoder
 		if (direction) {									//If the direction is up
 			if (menu_FLAG) {								//If we are in a menu
