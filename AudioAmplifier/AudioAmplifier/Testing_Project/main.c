@@ -14,20 +14,12 @@
 
 int main(void)
 {
-	/* Set the MOSI & SCK as Output lines */
-// 	DDRB |= (1 << PINB3) | (1 << PINB5) | (1 << PINB2);
-// 	//DDRB &= ~(1 << PINB4);
-// 	//DDRD |= (1 << PIND0);
-// 	/* Set the SCK pin to low */
-// 	//PORTB &= ~(1 << PINB5);
-// 	PORTB |= (1 << PINB0);
-// 	//PORTD &= ~(1 << PIND0);
-// 	/* Enable SPI */
-// 	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0);
 	Init_Pot_Meter();
 
     while (1) {
-		Write_Pot_Meter(255, CS_3);
+		Write_Pot_Meter(255, CS_2);
+		Write_Pot_Meter(0, CS_1);
+		Write_Pot_Meter(90, CS_0);
 		delay(300);
     }
 }

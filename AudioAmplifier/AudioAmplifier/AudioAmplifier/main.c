@@ -102,7 +102,7 @@ ISR(TIMER1_COMPA_vect) {
 			menu_FLAG = 0;
 		}
 	} else {
-		if (++screen_saver_counter == 1000 && !activity_FLAG) {
+		if (++screen_saver_counter == 3000 && !activity_FLAG) {
 			screen_saver_FLAG = 1;
 			screen_saver_counter = 0;
 			display_FLAG = 0;
@@ -119,6 +119,12 @@ int main(void) {
 	init_timer();
 	init_rot_but();
 	initBrightnessTimer();
+
+	for(uint8_t i = 0; i < 4; i++) {
+		ctrl_index = i;
+		update_system();
+	}
+	ctrl_index = 0;
 
 	vol_control[0] = "Volume";
 	vol_control[1] = "Bass";
@@ -370,16 +376,16 @@ void showScreenSaver() {
 void update_system() {
 	switch (ctrl_index) {
 		case 0:
-			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_0);
+			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_0);
 			break;
 		case 1:
-			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_1);
+			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_1);
 			break;
 		case 2:
-			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_2);
+			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_2);
 			break;
 		case 3:
-			Write_Pot_Meter(vol_values[vol_index[ctrl_index]], CS_3);
+			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_3);
 			break;
 		default:
 			break;
