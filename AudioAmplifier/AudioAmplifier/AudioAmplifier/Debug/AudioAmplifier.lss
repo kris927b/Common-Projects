@@ -1322,14 +1322,14 @@ void SPI_Init_Master() {
      7ee:	20 83       	st	Z, r18
 	
 	/* Enable SPI */
-	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0) | (1 << SPR1); 
+	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0); 
      7f0:	8c e4       	ldi	r24, 0x4C	; 76
      7f2:	90 e0       	ldi	r25, 0x00	; 0
      7f4:	2c e4       	ldi	r18, 0x4C	; 76
      7f6:	30 e0       	ldi	r19, 0x00	; 0
      7f8:	f9 01       	movw	r30, r18
      7fa:	20 81       	ld	r18, Z
-     7fc:	23 65       	ori	r18, 0x53	; 83
+     7fc:	21 65       	ori	r18, 0x51	; 81
      7fe:	fc 01       	movw	r30, r24
      800:	20 83       	st	Z, r18
 }
@@ -1653,10 +1653,10 @@ void init_usart(uint16_t baud_rate, uint8_t parity_bits, uint8_t stop_bits) {
      a00:	08 95       	ret
 
 00000a02 <__vector_3>:
+uint8_t screen_saver_pos_idx = 0;
+char *vol_control[5];
 char *main_menu[5];
 char *equalizer_menu[5];
-
-//Menu titles
 
 ISR(PCINT0_vect) {
      a02:	1f 92       	push	r1

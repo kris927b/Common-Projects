@@ -38,7 +38,6 @@ void SPI_Send_Data(uint8_t data) {
 void SPI_Send_Large_Data(uint8_t *data) {
 	/* Find the length of the data array */
 	uint16_t len = 2;
-	uint8_t spi_data[len];
 	for(int i = 0; i < len; i++) {
 		SPI_Send_Data(data[i]);
 	}

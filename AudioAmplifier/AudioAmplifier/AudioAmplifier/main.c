@@ -54,8 +54,6 @@ char *vol_control[5];
 char *main_menu[5];
 char *equalizer_menu[5];
 
-//Menu titles
-
 ISR(PCINT0_vect) {
 	if((PINB & (1 << PINB7)) == 0) {
 		activity();
