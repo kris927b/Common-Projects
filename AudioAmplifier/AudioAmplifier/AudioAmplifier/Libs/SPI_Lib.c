@@ -24,7 +24,7 @@ void SPI_Init_Master() {
 	PORTB &= ~(1 << PINB5);
 	
 	/* Enable SPI */
-	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0) | (1 << SPR1); 
+	SPCR |= (1 << SPE) | (1 << MSTR) | (1 << SPR0); 
 }
 
 void SPI_Send_Data(uint8_t data) {

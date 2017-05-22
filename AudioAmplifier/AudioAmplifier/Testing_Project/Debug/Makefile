@@ -38,6 +38,8 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../Dig_Pot_Lib.c \
+../i2cLib.c \
+../LCD_lib.c \
 ../main.c \
 ../SPI_Lib.c \
 ../std_lib.c
@@ -51,24 +53,32 @@ ASM_SRCS +=
 
 OBJS +=  \
 Dig_Pot_Lib.o \
+i2cLib.o \
+LCD_lib.o \
 main.o \
 SPI_Lib.o \
 std_lib.o
 
 OBJS_AS_ARGS +=  \
 Dig_Pot_Lib.o \
+i2cLib.o \
+LCD_lib.o \
 main.o \
 SPI_Lib.o \
 std_lib.o
 
 C_DEPS +=  \
 Dig_Pot_Lib.d \
+i2cLib.d \
+LCD_lib.d \
 main.d \
 SPI_Lib.d \
 std_lib.d
 
 C_DEPS_AS_ARGS +=  \
 Dig_Pot_Lib.d \
+i2cLib.d \
+LCD_lib.d \
 main.d \
 SPI_Lib.d \
 std_lib.d
@@ -87,6 +97,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 
