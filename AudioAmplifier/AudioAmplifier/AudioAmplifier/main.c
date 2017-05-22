@@ -66,10 +66,10 @@ ISR(PCINT1_vect) {
 	if((PINC & (1 << PINC0)) == 0) {
 		if (PINC & (1 << PINC1)) { //CW
 			activity();
-			update_display_values(1, 0);
+			update_display_values(1, 1);
 		} else { //CCW
 			activity();
-			update_display_values(1, 1);
+			update_display_values(1, 0);
 		}
 	}
 }
@@ -377,13 +377,13 @@ void update_system() {
 			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_0);
 			break;
 		case 1:
-			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_1);
+			Write_Pot_Meter(((vol_values[vol_index[ctrl_index]])), CS_1);
 			break;
 		case 2:
-			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_2);
+			Write_Pot_Meter(((vol_values[vol_index[ctrl_index]])), CS_2);
 			break;
 		case 3:
-			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_3);
+			Write_Pot_Meter(((vol_values[vol_index[ctrl_index]])), CS_3);
 			break;
 		default:
 			break;

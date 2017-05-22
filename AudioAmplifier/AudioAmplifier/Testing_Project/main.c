@@ -17,10 +17,7 @@ int main(void)
 	Init_Pot_Meter();
 
     while (1) {
-		Write_Pot_Meter(255, CS_2);
-		Write_Pot_Meter(0, CS_1);
-		Write_Pot_Meter(90, CS_0);
-		delay(300);
+		
     }
 }
 
