@@ -12,8 +12,6 @@
 /* Our own libraries, found in the Libs folder in the project */
 #include "Libs/Dig_Pot_Lib.h"	//Library for the digital pot meter
 #include "Libs/SPI_Lib.h"		//Library for SPI functionality
-#include "Libs/std_lib.h"		//Library for common functions that are useful
-#include "Libs/usart_lib.h"		//Library for Usart
 #include "Libs/i2cLib.h"		//Library for TWI
 #include "Libs/LCD_lib.h"		//Library for the LCD
 
@@ -31,9 +29,9 @@ void showScreenSaver(void);
 void update_system(void);
 
 //Index for volumes
-uint8_t vol_index[5] = {7, 7, 7, 7, 15};
-uint8_t vol_values[16] = {0, 1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 255};
-uint8_t ctrl_index = 0;
+uint8_t vol_index[5] = {7, 7, 7, 7, 15}; //Index of the different things to control, and their value
+uint8_t vol_values[16] = {0, 1, 2, 4, 6, 8, 12, 16, 24, 32, 48, 64, 96, 128, 192, 255}; //Volume scale
+uint8_t ctrl_index = 0; 
 
 //Flags for different task
 uint8_t display_FLAG = 0; //When to update the display (every 100 ms)
@@ -54,6 +52,8 @@ char *vol_control[5];
 char *main_menu[5];
 char *equalizer_menu[5];
 
+
+//Button interrupt, happens whenever there is a change on the pin
 ISR(PCINT0_vect) {
 	if((PINB & (1 << PINB7)) == 0) {
 		activity();
@@ -62,6 +62,7 @@ ISR(PCINT0_vect) {
 }
 
 
+//Rotary encoder interrupt. Happens when there is a change on the pin
 ISR(PCINT1_vect) {
 	if((PINC & (1 << PINC0)) == 0) {
 		if (PINC & (1 << PINC1)) { //CW
@@ -75,6 +76,7 @@ ISR(PCINT1_vect) {
 }
 
 
+//Scheduler to keep track of everything that needs to happen
 ISR(TIMER1_COMPA_vect) {
 	if(++display_counter == 10 && !screen_saver_FLAG) {
 		display_FLAG = 1;
@@ -110,6 +112,7 @@ ISR(TIMER1_COMPA_vect) {
 
 
 int main(void) {
+	//Init everything in the system
 	init_usart(9600, NONE, ONE);
 	Init_Pot_Meter();
 	i2cInit();
@@ -118,7 +121,7 @@ int main(void) {
 	init_rot_but();
 	initBrightnessTimer();
 
-	for(uint8_t i = 0; i < 4; i++) {
+	for(uint8_t i = 0; i < 4; i++) { //Set the system to its standard values per default
 		ctrl_index = i;
 		update_system();
 	}
@@ -142,27 +145,30 @@ int main(void) {
 	sei();
     while (1) 
     {
-		if(display_FLAG) {
+		if(display_FLAG) { //Update the display
 			update_display();
 			display_FLAG = 0;
 		}
 
-		if(activity_FLAG) {
+		if(activity_FLAG) { //If there are any activity then keep the brightness
 			setBrightness(vol_values[vol_index[4]]);
 		}
 
-		if (back_light_FLAG) {
+		if (back_light_FLAG) { //If no activity for 5 seconds then turn off the backlight
 			setBrightness(0);
 			back_light_FLAG = 0;
 		}
     }
 }
 
+
+//Update what is on the display
 void update_display() {
 	//Send the menu item to the display
+	//If we are in a ctrl menu, then we wanna show some sort of volume control
 	if (ctrl_menu_FLAG) {
 		write_volume_control(vol_control[ctrl_index], vol_values[vol_index[ctrl_index]]);
-	} else {
+	} else { //If we are in a menu show either the EQ menu or the main menu
 		if (equalizer_menu_FLAG) {
 			write_menu_items(equalizer_menu[equalizer_menu_index], equalizer_menu[equalizer_menu_index + 1]);
 		} else {
@@ -272,7 +278,7 @@ void update_display_values(uint8_t device, uint8_t direction) {
 				if(ctrl_menu_FLAG) {						//If we are in a ctrl menu, we must be in the brightness menu
 					ctrl_menu_FLAG = 0;						//However since it is a button press we want to set the flag to false so we get out of the menu	
 				} else {									//If we are in the main menu
-					switch (menu_index) {					//We ant to figure out what we want to do, depending on what menu item we are highlighting
+					switch (menu_index) {					//We want to figure out what we want to do, depending on what menu item we are highlighting
 						case 0:								
 							equalizer_menu_FLAG = 1;		//If we are highlighting EQ menu, then we want to access it
 							break;
@@ -303,6 +309,8 @@ void update_display_values(uint8_t device, uint8_t direction) {
 	}
 }
 
+
+//Init timer for the scheduler, interrupt happens each 10 ms.
 void init_timer() {
 	TCNT1 = 0;
 
@@ -313,6 +321,8 @@ void init_timer() {
 	TCCR1B |= (1 << CS11) | (1 << WGM12);
 }
 
+
+//If an activity happens then set and clear the correct flags
 void activity() {
 	activity_FLAG = 1;
 	activity_counter = 0;
@@ -322,12 +332,16 @@ void activity() {
 	display_FLAG = 1;
 }
 
+
+//Init the rotary encoder and the button
 void init_rot_but() {
 	PCICR |= (1 << PCIE1) | (1 << PCIE0);
 	PCMSK1 |= (1 << PCINT8);
 	PCMSK0 |= (1 << PCINT7);
 }
 
+
+//Init the timer to control the brightness through PWM
 void initBrightnessTimer() {
 	DDRD |= (1 << DDD3); //setting pind3 as output
 	TCCR2A |= (1 << COM2B1) | (1 << WGM21) | (1 << WGM20); //non-inverting mode for OC2B, fastPWM
@@ -335,10 +349,14 @@ void initBrightnessTimer() {
 	OCR2B = 255;
 }
 
+
+//Set the brightness to a value between 0 - 255
 void setBrightness(uint8_t brightness) {
 	OCR2B = brightness;
 }
 
+
+//Sshow the screen saver on the display. 
 void showScreenSaver() {
 	char line[17] = {32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 0};
 	char screen_saver[8] = "t(-_-t)";
@@ -371,10 +389,12 @@ void showScreenSaver() {
 	}
 }
 
+
+//If the user changes some value, then change it in the system
 void update_system() {
 	switch (ctrl_index) {
 		case 0:
-			Write_Pot_Meter((255 - (vol_values[vol_index[ctrl_index]])), CS_0);
+			Write_Pot_Meter((250 - (vol_values[vol_index[ctrl_index]])), CS_0);
 			break;
 		case 1:
 			Write_Pot_Meter(((vol_values[vol_index[ctrl_index]])), CS_1);

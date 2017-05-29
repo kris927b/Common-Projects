@@ -3,7 +3,7 @@
 
 void i2cInit(){
     TWSR &= ~((1 << TWPS0) | (1 << TWPS1)); //prescaler set to 0
-    TWBR = 12; //setting the bit rate to 400kHz
+    TWBR = 72; //setting the bit rate to 400kHz
     TWCR |= (1 << TWEN); //i2c enable 
 }
 
