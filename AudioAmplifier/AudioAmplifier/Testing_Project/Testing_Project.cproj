@@ -149,6 +149,18 @@
     <Compile Include="Dig_Pot_Lib.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="i2cLib.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="i2cLib.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LCD_lib.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LCD_lib.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>

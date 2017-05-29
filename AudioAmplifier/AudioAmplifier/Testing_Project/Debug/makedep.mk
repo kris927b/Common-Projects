@@ -4,6 +4,10 @@
 
 Dig_Pot_Lib.c
 
+i2cLib.c
+
+LCD_lib.c
+
 main.c
 
 SPI_Lib.c

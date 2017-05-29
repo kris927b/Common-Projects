@@ -9,15 +9,16 @@
 #ifndef DIG_POT_LIB_H_
 #define DIG_POT_LIB_H_
 
-#define CS_1 PINB0 // Master Pot meter
-#define CS_2 PINB1 // Bass Pot meter
-#define CS_3 PINB2 // Treble Pot meter
+#define CS_0 PINB0 // Master Pot meter
+#define CS_1 PINB1 // Bass Pot meter
+#define CS_2 PINB2 // Mid-Range Pot meter
+#define CS_3 PINB4 // Treble Pot meter
 #define CS_D DDRB
 #define CS PORTB
 
 #include <avr/io.h>
 
 void Init_Pot_Meter(void);
-uint8_t * Write_Pot_Meter(uint8_t value, uint8_t CS_pin);
+void Write_Pot_Meter(uint8_t value, uint8_t CS_pin);
 
 #endif /* DIG_POT_LIB_H_ */

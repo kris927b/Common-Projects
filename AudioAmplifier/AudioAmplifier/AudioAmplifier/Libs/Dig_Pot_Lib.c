@@ -11,8 +11,8 @@
 
 void Init_Pot_Meter() {
 	SPI_Init_Master();
-	CS_D |= (1 << CS_1) | (1 << CS_2) | (1 << CS_3);
-	CS |= (1 << CS_1) | (1 << CS_2) | (1 << CS_3);
+	CS_D |= (1 << CS_0) | (1 << CS_1) | (1 << CS_2) | (1 << CS_3);
+	CS |= (1 << CS_0) | (1 << CS_1) | (1 << CS_2) | (1 << CS_3);
 }
 
 void Write_Pot_Meter(uint8_t value, uint8_t CS_pin) {
